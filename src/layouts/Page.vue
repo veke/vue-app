@@ -1,39 +1,36 @@
 <template>
-    <div class="container">
-        <div class="row">
-            <div class="column">
-                <header>
-                    HEADER<button @click="test">test</button>
-                    <ul>
-                        <li v-for="item in items" :key="item.id">
-                            {{ item.title.fi }}
-                        </li>
-                    </ul>
-                </header>
+    <div class="page-wrapper">
+        <div class="content list-content">
+            <div class="container">
+                <div class="row">
+                    <div class="column">
+                        <header>
+                            <h2>Areena elokuvat</h2>
+                        </header>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="column">
+                        <transition>
+                            <router-view></router-view>
+                        </transition>
+                    </div>
+                </div>
             </div>
+        </div>
+        <div class="content details-content">
+            <item></item>
         </div>
     </div>
 </template>
 
 <script>
-
-import get from '../utils/api';
+import Item from '../components/Item.vue';
 
 export default {
     name: 'page',
-    data() {
-        return {
-            items: []
-        }
-    },
-    methods: {
-        test: function() {
-            get('/programs/items.json?category=5-135').promise.then(res => {
-                this.items = res.data;
-            }).catch(err => {
-                console.log(err);
-            });
-        }
+    components: {
+        Item
     }
 }
 </script>
