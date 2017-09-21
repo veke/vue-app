@@ -1,0 +1,9 @@
+@import 'variables';
+@import '../../node_modules/milligram/src/milligram';
+
+body {
+    font-family: $page-font;
+    color: $page-font-color;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
